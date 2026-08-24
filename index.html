@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="말로(음성메모) 사용 안내와 문의를 위한 공식 지원 페이지입니다.">
+  <meta name="theme-color" content="#ffffff">
+  <title>말로(음성메모) 지원</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #191f28;
+      --muted: #6b7684;
+      --line: #e5e8eb;
+      --surface: #f7f8fa;
+      --accent: #3182f6;
+      --accent-soft: #eaf3ff;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Noto Sans KR", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(100% - 40px, 920px);
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--accent);
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    header nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    main { padding: 88px 0 96px; }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+    }
+
+    .intro {
+      max-width: 590px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      letter-spacing: -0.018em;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      font-size: 15px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button:hover { background: var(--surface); }
+    .button.primary:hover { background: #1b64da; }
+    .button:active { transform: translateY(1px); }
+
+    section {
+      margin-top: 108px;
+      scroll-margin-top: 28px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+
+    .section-copy {
+      margin: 0 0 34px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .faq-list { border-top: 1px solid var(--line); }
+
+    details { border-bottom: 1px solid var(--line); }
+
+    summary {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 750;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      color: var(--muted);
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    details[open] summary::after { content: "−"; }
+
+    details p {
+      max-width: 700px;
+      margin: -4px 0 28px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+      padding: 38px;
+      border-radius: var(--radius);
+      background: var(--accent-soft);
+    }
+
+    .contact h2 { margin-bottom: 10px; }
+    .contact p { margin: 0; color: #526274; line-height: 1.7; }
+
+    footer {
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 32px, 920px); }
+      header { min-height: 68px; }
+      header nav { display: none; }
+      main { padding: 64px 0 72px; }
+      .intro { font-size: 16px; }
+      section { margin-top: 80px; }
+      .contact { grid-template-columns: 1fr; padding: 28px 24px; }
+      .contact .button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <a class="brand" href="#top" aria-label="말로 지원 홈">
+      <span class="brand-mark" aria-hidden="true">ㅁ</span>
+      <span>말로</span>
+    </a>
+    <nav aria-label="지원 페이지 메뉴">
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+  </header>
+
+  <main id="top" class="shell">
+    <p class="eyebrow">말로(음성메모) 지원</p>
+    <h1>생각을 말하고,<br>기록으로 남기세요.</h1>
+    <p class="intro">
+      말로는 음성과 타이핑을 자연스럽게 오가며 메모할 수 있는 앱입니다.
+      사용 중 궁금한 점이 있다면 아래 안내를 확인하거나 문의를 남겨주세요.
+    </p>
+    <div class="actions">
+      <a class="button primary" href="#faq">도움말 보기</a>
+      <a class="button" href="https://github.com/Leejunmyung/mallo-pages/issues" rel="noopener noreferrer">문의 남기기</a>
+    </div>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">자주 묻는 질문</h2>
+      <p class="section-copy">앱을 사용하면서 자주 만나는 상황을 정리했습니다.</p>
+      <div class="faq-list">
+        <details>
+          <summary>음성 입력이 시작되지 않아요.</summary>
+          <p>기기의 설정에서 말로 앱의 마이크 및 음성 인식 권한이 허용되어 있는지 확인해 주세요. 권한을 변경한 뒤 앱을 다시 열면 음성 입력을 사용할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>음성 메모는 어디에서 처리되나요?</summary>
+          <p>기본 음성 인식은 기기에서 제공하는 음성 인식 기능을 사용합니다. 메모는 사용자의 기기에 저장됩니다.</p>
+        </details>
+        <details>
+          <summary>메모를 실수로 삭제했어요.</summary>
+          <p>삭제 직후 화면 아래에 표시되는 실행 취소를 누르면 메모를 되돌릴 수 있습니다. 실행 취소 안내가 사라진 뒤에는 복원할 수 없으니 삭제 전에 내용을 확인해 주세요.</p>
+        </details>
+        <details>
+          <summary>앱 잠금은 어떻게 사용하나요?</summary>
+          <p>설정에서 앱 잠금을 켜고 PIN을 등록할 수 있습니다. 지원되는 기기에서는 생체 인증도 함께 사용할 수 있습니다.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">도움이 더 필요하신가요?</h2>
+        <p>문제 상황과 사용 중인 기기 정보를 함께 남겨주시면 확인에 도움이 됩니다.</p>
+      </div>
+      <a class="button primary" href="https://github.com/Leejunmyung/mallo-pages/issues" rel="noopener noreferrer">지원 문의</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">© 2026 JUNMYUNG LEE. 말로(음성메모) 공식 지원 페이지.</div>
+  </footer>
+</body>
+</html>
